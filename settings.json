@@ -10,9 +10,6 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "terminal": {
-    "dock": "bottom"
-  },
   "jupyter": {
     "enabled": true
   },
@@ -51,6 +48,7 @@
   "buffer_font_features": { "calt": false },
   "use_autoclose": false,
   "terminal": {
+    "dock": "bottom",
     "detect_venv": {
       "on": {
         // Default directories to search for virtual environments, relative
@@ -74,29 +72,14 @@
     "css": {
       "templateStringLanguages": ["css", "styled"],
       "embeddedLanguages": {
-        "css": [
-          "javascript",
-          "typescript",
-          "javascriptreact",
-          "typescriptreact"
-        ]
+        "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
       }
     },
     "vtsls": {
       "settings": {
         "js/ts.implicitProjectConfig.checkJs": true,
-        "javascript.validate.templateStringLiterals.identifiers": [
-          "js",
-          "html",
-          "sql",
-          "graphql"
-        ],
-        "typescript.validate.templateStringLiterals.identifiers": [
-          "js",
-          "html",
-          "sql",
-          "graphql"
-        ],
+        "javascript.validate.templateStringLiterals.identifiers": ["js", "html", "sql", "graphql"],
+        "typescript.validate.templateStringLiterals.identifiers": ["js", "html", "sql", "graphql"],
         // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
         // For JavaScript:
         "javascript": {
