@@ -4,12 +4,17 @@
 // documentation: https://zed.dev/docs/configuring-zed
 //
 // To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
 {
   "features": {
-    "edit_prediction_provider": "zed",
-    "copilot": false
+    "edit_prediction_provider": "zed"
+  },
+  "terminal": {
+    "dock": "bottom"
+  },
+  "jupyter": {
+    "enabled": true
   },
   "assistant": {
     "default_model": {
@@ -19,52 +24,32 @@
     "version": "2",
     "enable_experimental_live_diffs": true
   },
-  // "edit_predictions": {
-  //   "mode": "eager_preview"
-  // },
+  // "show_completions_on_input": false,
+  "show_edit_predictions": true,
   "vim_mode": true,
   "ui_font_size": 16,
-  "buffer_font_size": 15.0,
+  "buffer_font_size": 16,
   "soft_wrap": "editor_width",
-  "buffer_font_features": {
-    "calt": false
-  },
-  "diagnostics": {},
   "autosave": "on_focus_change",
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  "languages": {
-    "TOML": {
-      "format_on_save": "off"
+  "auto_signature_help": false,
+  "show_signature_help_after_edits": false,
+  "preferred_line_length": 100,
+  "inlay_hints": {
+    "enabled": false,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": true,
+    "toggle_on_modifiers_press": {
+      "function": true
     }
   },
-  "lsp": {
-    "typescript": {
-      "preferGoToSourceDefintion": true
-    }
+  "bindings": {
+    // Here we also allow `alt-enter` to accept the prediction
+    // "alt-enter": "editor::AcceptEditPrediction"
   },
-  // "lsp": {
-  //   "vtsls": {
-  //     "settings": {
-  //       "typescript": { "tsserver": { "maxTsServerMemory": 16184 } }
-  //     }
-  //   },
-  //   "pyright": {
-  //     "settings": {
-  //       "python.analysis": {
-  //         // "diagnosticMode": "openFilesOnly",
-  //         "typeCheckingMode": "standard"
-  //       },
-  //       "python": {
-  //         "pythonPath": "local/.venv/bin/python",
-  //         "venvPath": "local/.venv"
-  //       }
-  //     }
-  //   }
-  // },
+  "buffer_font_features": { "calt": false },
+  "use_autoclose": false,
   "terminal": {
     "detect_venv": {
       "on": {
@@ -76,5 +61,108 @@
         "activate_script": "default"
       }
     }
+  },
+  "languages": {
+    "TOML": {
+      "format_on_save": "off"
+    }
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {}
+    },
+    "css": {
+      "templateStringLanguages": ["css", "styled"],
+      "embeddedLanguages": {
+        "css": [
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
+        ]
+      }
+    },
+    "vtsls": {
+      "settings": {
+        "js/ts.implicitProjectConfig.checkJs": true,
+        "javascript.validate.templateStringLiterals.identifiers": [
+          "js",
+          "html",
+          "sql",
+          "graphql"
+        ],
+        "typescript.validate.templateStringLiterals.identifiers": [
+          "js",
+          "html",
+          "sql",
+          "graphql"
+        ],
+        // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+        // For JavaScript:
+        "javascript": {
+          "validate": {
+            "templateStringLiterals": true
+          },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true
+            },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true }
+          }
+        },
+        // For TypeScript:
+        "typescript": {
+          "validate": {
+            "templateStringLiterals": true
+          },
+          "languageFeatures": {
+            "semanticTokens": true
+          },
+          "tsserver": { "experimental": { "enableProjectDiagnostics": true } },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true
+            },
+            "parameterTypes": { "enabled": true },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "enumMemberValues": { "enabled": true }
+          }
+        }
+      }
+    }
   }
 }
+
+// "lsp": {
+//   "vtsls": {
+//     "settings": {
+//       "typescript": { "tsserver": { "maxTsServerMemory": 16184 } }
+//     }
+//   },
+//   "pyright": {
+//     "settings": {
+//       "python.analysis": {
+//         // "diagnosticMode": "openFilesOnly",
+//         "typeCheckingMode": "standard"
+//       },
+//       "python": {
+//         "pythonPath": "local/.venv/bin/python",
+//         "venvPath": "local/.venv"
+//       }
+//     }
+//   }
+// },
