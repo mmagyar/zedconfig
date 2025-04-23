@@ -86,7 +86,11 @@
     "pyright": {
       "settings": {
         "python.analysis": {
-          "typeCheckingMode": "standard"
+          "typeCheckingMode": "standard",
+          "extraPaths": ["${workspaceFolder}"],
+          "useLibraryCodeForTypes": true,
+          "autoSearchPaths": true,
+          "diagnosticMode": "workspace"
         },
         "python": {
           "pythonPath": "local/.venv/bin/python",
