@@ -61,6 +61,14 @@
     }
   },
   "languages": {
+    "CSS": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
     "TOML": {
       "format_on_save": "off"
     }
