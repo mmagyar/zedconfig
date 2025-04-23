@@ -83,6 +83,17 @@
         "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
       }
     },
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "typeCheckingMode": "standard"
+        },
+        "python": {
+          "pythonPath": "local/.venv/bin/python",
+          "venvPath": "local/.venv"
+        }
+      }
+    },
     "vtsls": {
       "settings": {
         "js/ts.implicitProjectConfig.checkJs": true,
@@ -137,23 +148,3 @@
     }
   }
 }
-
-// "lsp": {
-//   "vtsls": {
-//     "settings": {
-//       "typescript": { "tsserver": { "maxTsServerMemory": 16184 } }
-//     }
-//   },
-//   "pyright": {
-//     "settings": {
-//       "python.analysis": {
-//         // "diagnosticMode": "openFilesOnly",
-//         "typeCheckingMode": "standard"
-//       },
-//       "python": {
-//         "pythonPath": "local/.venv/bin/python",
-//         "venvPath": "local/.venv"
-//       }
-//     }
-//   }
-// },
