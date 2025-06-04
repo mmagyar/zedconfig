@@ -29,5 +29,11 @@
     "bindings": {
       "tab": ["vim::Literal", ["tab", "\u0009"]]
     }
+  },
+  {
+    "bindings": {
+      "cmd-i": "editor::GoToImplementation",
+      "cmd-shift-i": "editor::GoToImplementationSplit"
+    }
   }
 ]
