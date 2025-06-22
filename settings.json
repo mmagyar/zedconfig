@@ -9,7 +9,7 @@
 {
   "theme": "Ayu Mirage",
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "jupyter": {
     "enabled": true,
@@ -26,7 +26,6 @@
   },
   "agent": {
     "default_profile": "write",
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-3.7-sonnet"
@@ -148,7 +147,6 @@
             "semanticTokens": true
           },
           "tsserver": { "experimental": { "enableProjectDiagnostics": true } },
-
           "inlayHints": {
             "parameterNames": {
               "enabled": "all",
