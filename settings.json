@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Ayu Mirage",
+  "theme": "One Light",
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -28,9 +28,8 @@
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
-    },
-    "version": "2"
+      "model": "claude-sonnet-4"
+    }
   },
   // "show_completions_on_input": false,
   "show_edit_predictions": true,

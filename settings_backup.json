@@ -7,28 +7,28 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "edit_predictions": {
-    "mode": "subtle",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_text_threads": false
-  },
+  "theme": "One Light",
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "terminal": {
-    "dock": "bottom"
-  },
   "jupyter": {
-    "enabled": true
+    "enabled": true,
+    "kernel_selections": {
+      "python": "conda-env",
+      "typescript": "deno",
+      "javascript": "deno",
+      "r": "ark"
+    }
   },
-  "assistant": {
+  "edit_predictions": {
+    "mode": "subtle",
+    "enabled_in_text_threads": true
+  },
+  "agent": {
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
@@ -52,12 +52,44 @@
       "function": true
     }
   },
+  // "node": {
+  //   "path": "/Users/matemagyar/.bun/bin/bun",
+  //   "npm_path": "/Users/matemagyar/.bun/bin/bun",
+
+  //   "ignore_system_version":false
+  // },
   "bindings": {
     // Here we also allow `alt-enter` to accept the prediction
     // "alt-enter": "editor::AcceptEditPrediction"
   },
   "buffer_font_features": { "calt": false },
   "use_autoclose": false,
+  "terminal": {
+    "dock": "bottom",
+    "detect_venv": {
+      "on": {
+        // Default directories to search for virtual environments, relative
+        // to the current working directory. We recommend overriding this
+        // in your project's settings, rather than globally.
+        "directories": [".venv", "venv", "local/.venv"],
+        // Can also be `csh`, `fish`, and `nushell`
+        "activate_script": "default"
+      }
+    }
+  },
+  "languages": {
+    "CSS": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TOML": {
+      "format_on_save": "off"
+    }
+  },
   "lsp": {
     "eslint": {
       "settings": {}
@@ -66,6 +98,24 @@
       "templateStringLanguages": ["css", "styled"],
       "embeddedLanguages": {
         "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
+      }
+    },
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "typeCheckingMode": "standard",
+          "extraPaths": ["${workspaceFolder}"],
+          "useLibraryCodeForTypes": true,
+          "ignoreMissingImports": true,
+          "ignoreMissingTypeStubs": true,
+          "autoSearchPaths": true,
+          // "diagnosticMode": "",
+          "openFilesOnly": false
+        },
+        "python": {
+          "pythonPath": "local/.venv/bin/python",
+          "venvPath": "local/.venv"
+        }
       }
     },
     "vtsls": {
@@ -80,9 +130,15 @@
             "templateStringLiterals": true
           },
           "inlayHints": {
-            "parameterNames": { "enabled": "all", "suppressWhenArgumentMatchesName": true },
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true
+            },
             "parameterTypes": { "enabled": true },
-            "variableTypes": { "enabled": true, "suppressWhenTypeMatchesName": true },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
             "propertyDeclarationTypes": { "enabled": true },
             "functionLikeReturnTypes": { "enabled": true },
             "enumMemberValues": { "enabled": true }
@@ -98,9 +154,15 @@
           },
           "tsserver": { "experimental": { "enableProjectDiagnostics": true } },
           "inlayHints": {
-            "parameterNames": { "enabled": "all", "suppressWhenArgumentMatchesName": true },
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true
+            },
             "parameterTypes": { "enabled": true },
-            "variableTypes": { "enabled": true, "suppressWhenTypeMatchesName": true },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
             "propertyDeclarationTypes": { "enabled": true },
             "functionLikeReturnTypes": { "enabled": true },
             "enumMemberValues": { "enabled": true }
