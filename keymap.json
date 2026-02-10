@@ -35,5 +35,17 @@
       "cmd-i": "editor::GoToImplementation",
       "cmd-shift-i": "editor::GoToImplementationSplit"
     }
+  },
+  {
+    "context": "((vim_mode == helix_normal || vim_mode == helix_select) && !menu)",
+    "bindings": {
+      "g p": null
+    }
+  },
+  {
+    "context": "((VimControl && !menu) || (!Editor && !Terminal))",
+    "bindings": {
+      "g p": "vim::GoToPreviousTab"
+    }
   }
 ]

@@ -7,22 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "tabs": { "file_icons": true },
-
-  "colorize_brackets": true,
-  "indent_guides": {
-    "background_coloring": "disabled"
-  },
-  "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
-    "dark": "Catppuccin Macchiato"
-  },
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Catppuccin Macchiato"
-  },
+  "theme": "One Light",
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -43,15 +28,15 @@
     "default_profile": "write",
     "always_allow_tool_actions": true,
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     }
   },
   // "show_completions_on_input": false,
   "show_edit_predictions": true,
   "vim_mode": true,
-  "ui_font_size": 14.0,
-  "buffer_font_size": 14.0,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
   "soft_wrap": "editor_width",
   "autosave": "on_focus_change",
   "auto_signature_help": false,
@@ -70,7 +55,6 @@
   "buffer_font_features": { "calt": false },
   "use_autoclose": false,
   "terminal": {
-    "font_size": 14.0,
     "dock": "bottom",
     "detect_venv": {
       "on": {
@@ -111,9 +95,9 @@
         "python.analysis": {
           "typeCheckingMode": "standard",
           "extraPaths": [
-            "/Users/matemagyar/code/controlplane-be",
-            "/Users/matemagyar/code/controlplane-be/local",
-            "/Users/matemagyar/code/controlplane-be/local/.venv/lib/python3.12/site-packages"
+            "${workspaceFolder}",
+            "${workspaceFolder}/local",
+            "${workspaceFolder}/local/.venv/lib/python3.12/site-packages"
           ],
           "useLibraryCodeForTypes": true,
           "ignoreMissingImports": true,
@@ -123,8 +107,8 @@
           "openFilesOnly": false
         },
         "python": {
-          "pythonPath": "/Users/matemagyar/code/controlplane-be/local/.venv/bin/python",
-          "venvPath": "/Users/matemagyar/code/controlplane-be/local/.venv"
+          "pythonPath": "${workspaceFolder}/local/.venv/bin/python",
+          "venvPath": "${workspaceFolder}/local/.venv"
         }
       }
     },
@@ -136,9 +120,6 @@
         // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
         // For JavaScript:
         "javascript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always"
-          },
           "validate": {
             "templateStringLiterals": true
           },
@@ -159,9 +140,6 @@
         },
         // For TypeScript:
         "typescript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always"
-          },
           "validate": {
             "templateStringLiterals": true
           },
