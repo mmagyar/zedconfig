@@ -1,5 +1,20 @@
 {
   "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+  },
+  "vertical_scroll_margin": 8,
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/.ruff_cache",
+    "**/.pytest_cache",
+    "**/dist",
+    "**/build",
+  ],
+  "confirm_quit": true,
   "ui_font_size": 14.0,
   "buffer_font_size": 14.0,
   "soft_wrap": "editor_width",
@@ -41,11 +56,7 @@
   "indent_guides": {
     "background_coloring": "disabled",
   },
-  "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
-    "dark": "Catppuccin Macchiato",
-  },
+  "icon_theme": "Catppuccin Macchiato",
   "theme": {
     "mode": "dark",
     "light": "One Light",
@@ -74,17 +85,189 @@
     },
     "favorite_models": [],
     "model_parameters": [],
-  },
-  "default_profile": "write",
-  "thread_summary_model": {
-    "model": "claude-sonnet-4.6",
-    "effort": "high",
-    "enable_thinking": true,
-    "provider": "copilot_chat",
+    "default_profile": "write",
+    "tool_permissions": {
+      "tools": {
+        "edit_file": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\.env($|\\.)" },
+            { "pattern": "secrets?/" },
+            { "pattern": "\\.(pem|key|p12|pfx)$" },
+            { "pattern": "\\.ssh/" },
+          ],
+        },
+        "delete_path": {
+          "default": "confirm",
+        },
+        "move_path": {
+          "default": "confirm",
+        },
+        "save_file": {
+          "default": "allow",
+        },
+        "restore_file_from_disk": {
+          "default": "allow",
+        },
+        "web_search": {
+          "default": "allow",
+        },
+        "copy_path": {
+          "default": "allow",
+        },
+        "terminal": {
+          "always_allow": [
+            // git read-only
+            {
+              "pattern": "^git\\s+(status|log|diff|show|branch|remote|blame|annotate|ls-files|ls-tree|describe|reflog|grep|shortlog|rev-parse|rev-list|cat-file|fetch)(\\s|$)",
+            },
+            { "pattern": "^git\\s+stash\\s+list" },
+            { "pattern": "^git\\s+tag(\\s+-l|\\s*$)" },
+            // filesystem read
+            { "pattern": "^(ls|ll|la|dir)(\\s|$)" },
+            { "pattern": "^(cat|head|tail|bat|less|more)(\\s|$)" },
+            { "pattern": "^(find|grep|rg|ag|ripgrep)(\\s|$)" },
+            { "pattern": "^(wc|sort|uniq|awk|sed|cut|tr|jq)(\\s|$)" },
+            { "pattern": "^(stat|file|du|df)(\\s|$)" },
+            // system info
+            { "pattern": "^(pwd|echo|date|uptime|uname)(\\b|$)" },
+            { "pattern": "^(which|whereis|type|command)(\\s|$)" },
+            { "pattern": "^(env|printenv|ps)(\\b|$)" },
+
+            // build / test / lint
+            { "pattern": "^(npm|npx|yarn|pnpm)(\\s|$)" },
+            { "pattern": "^(pip|pip3|uv)(\\s|$)" },
+            // python: only allow safe invocations (version check and known safe modules)
+            { "pattern": "^python3?\\s+--version" },
+            {
+              "pattern": "^python3?\\s+-m\\s+(pytest|unittest|mypy|black|ruff|pylint|flake8|coverage|pip|pip3)\\b",
+            },
+            { "pattern": "^(node|deno|bun)(\\s|$)" },
+            { "pattern": "^(cargo|rustc|rustfmt)(\\s|$)" },
+            { "pattern": "^(make|cmake)(\\s|$)" },
+            { "pattern": "^(ruff|black|mypy|pylint|flake8)(\\s|$)" },
+            { "pattern": "^(prettier|eslint|tsc)(\\s|$)" },
+            // directory creation
+            { "pattern": "^mkdir(\\s|$)" },
+          ],
+          "always_deny": [
+            // python -c allows arbitrary inline code execution with no audit trail
+            { "pattern": "^python3?\\s+-c\\b" },
+          ],
+        },
+        // fetch: allow only known documentation/registry domains, confirm everything else
+        "fetch": {
+          "default": "confirm",
+          "always_allow": [
+            // docs & references
+            { "pattern": "https?://(www\\.)?developer\\.mozilla\\.org" },
+            { "pattern": "https?://(www\\.)?stackoverflow\\.com" },
+            { "pattern": "https?://(www\\.)?zed\\.dev" },
+            { "pattern": "https?://(www\\.)?zod\\.dev" },
+            { "pattern": "https?://(www\\.)?devdocs\\.io" },
+            // rust
+            { "pattern": "https?://docs\\.rs" },
+            { "pattern": "https?://crates\\.io" },
+            { "pattern": "https?://(www\\.)?rust-lang\\.org" },
+            // python
+            { "pattern": "https?://docs\\.python\\.org" },
+            { "pattern": "https?://pypi\\.org" },
+            { "pattern": "https?://docs\\.pydantic\\.dev" },
+            { "pattern": "https?://fastapi\\.tiangolo\\.com" },
+            { "pattern": "https?://(www\\.)?djangoproject\\.com" },
+            { "pattern": "https?://flask\\.palletsprojects\\.com" },
+            { "pattern": "https?://(www\\.)?sqlalchemy\\.org" },
+            // js / ts / node
+            { "pattern": "https?://(www\\.)?npmjs\\.com" },
+            { "pattern": "https?://(www\\.)?nodejs\\.org" },
+            { "pattern": "https?://www\\.typescriptlang\\.org" },
+            { "pattern": "https?://(www\\.)?jsr\\.io" },
+            { "pattern": "https?://deno\\.land" },
+            { "pattern": "https?://(www\\.)?bun\\.sh" },
+            // js frameworks & tools
+            { "pattern": "https?://(www\\.)?react\\.dev" },
+            { "pattern": "https?://(www\\.)?nextjs\\.org" },
+            { "pattern": "https?://(www\\.)?vitejs\\.dev" },
+            { "pattern": "https?://(www\\.)?vitest\\.dev" },
+            { "pattern": "https?://(www\\.)?astro\\.build" },
+            { "pattern": "https?://(www\\.)?svelte\\.dev" },
+            { "pattern": "https?://(www\\.)?nuxt\\.com" },
+            { "pattern": "https?://(www\\.)?remix\\.run" },
+            { "pattern": "https?://tailwindcss\\.com" },
+            { "pattern": "https?://(www\\.)?prisma\\.io" },
+            { "pattern": "https?://trpc\\.io" },
+            { "pattern": "https?://(www\\.)?graphql\\.org" },
+            // linting / formatting
+            { "pattern": "https?://(www\\.)?eslint\\.org" },
+            { "pattern": "https?://(www\\.)?prettier\\.io" },
+            // testing
+            { "pattern": "https?://jestjs\\.io" },
+            { "pattern": "https?://testing-library\\.com" },
+            // databases
+            { "pattern": "https?://(www\\.)?postgresql\\.org" },
+            { "pattern": "https?://(www\\.)?redis\\.io" },
+            { "pattern": "https?://(www\\.)?mongodb\\.com" },
+            // infrastructure
+            { "pattern": "https?://docs\\.docker\\.com" },
+            { "pattern": "https?://kubernetes\\.io" },
+            // microsoft / azure
+            { "pattern": "https?://learn\\.microsoft\\.com" },
+            // aws
+            { "pattern": "https?://docs\\.aws\\.amazon\\.com" },
+            { "pattern": "https?://aws\\.amazon\\.com/documentation" },
+            { "pattern": "https?://repost\\.aws" },
+            // ai providers
+            { "pattern": "https?://docs\\.anthropic\\.com" },
+            { "pattern": "https?://platform\\.openai\\.com" },
+            // github (public content only)
+            { "pattern": "https?://(www\\.)?github\\.com" },
+            { "pattern": "https?://raw\\.githubusercontent\\.com" },
+            { "pattern": "https?://api\\.github\\.com" },
+          ],
+        },
+        // creating directories is always benign
+        "create_directory": {
+          "default": "allow",
+        },
+      },
+    },
+    "thread_summary_model": {
+      "model": "claude-sonnet-4.6",
+
+      "enable_thinking": false,
+      "provider": "copilot_chat",
+    },
   },
   "show_edit_predictions": true,
 
   "languages": {
+    "Python": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "ruff",
+          "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"],
+        },
+      },
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
     "CSS": {
       "language_servers": ["vscode-css-language-server"],
 
@@ -102,12 +285,6 @@
   "lsp": {
     "eslint": {
       "settings": {},
-    },
-    "css": {
-      "templateStringLanguages": ["css", "styled"],
-      "embeddedLanguages": {
-        "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
-      },
     },
     "basedpyright": {
       "settings": {
