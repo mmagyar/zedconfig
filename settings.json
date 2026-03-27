@@ -7,6 +7,21 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  /* Duplicated key auto-commented: "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  }, */
+  "agent_servers": {
+    "gemini": {
+      "type": "registry"
+    }
+  },
   "tabs": { "file_icons": true },
 
   "max_tabs": 5,
@@ -20,9 +35,9 @@
     "dark": "Catppuccin Macchiato",
   },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Macchiato",
+    "dark": "One Dark",
   },
   "jupyter": {
     "enabled": true,
@@ -31,6 +46,7 @@
       "typescript": "deno",
       "javascript": "deno",
       "r": "ark",
+    }},
   "language_models": {
     "openai_compatible": {
       "mlx-lm": {
@@ -56,89 +72,29 @@
       "api_url": "http://localhost:11434",
     },
   },
-  "theme": "Ayu Dark",
-  "jupyter": {},
   "edit_predictions": {
     "provider": "zed",
-    "mode": "subtle",
     "mode": "eager",
     "enabled_in_text_threads": true,
   },
   "agent": {
-    "tool_permissions": {
-      "tools": {
-        "terminal": {
-          "default": "allow",
-          "always_allow": [
-            {
-              "pattern": "^mkdir\\b"
-            },
-            {
-              "pattern": "^ls\\s+slx/bun/node_modules(\\s|$)"
-            },
-            {
-              "pattern": "^ls\\b"
-            },
-            {
-              "pattern": "^ls\\s+node_modules/@types(\\s|$)"
-            },
-            {
-              "pattern": "^bun\\s+run(\\s|$)"
-            },
-            {
-              "pattern": "^cd\\s+bun(\\s|$)"
-            },
-            {
-              "pattern": "^cat\\s+bun/node_modules/@types/uuid/package\\.json(\\s|$)"
-            },
-            {
-              "pattern": "^find\\s+bun/src(\\s|$)"
-            },
-            {
-              "pattern": "^cd\\s+/Users/matemagyar/slx/bun(\\s|$)"
-            },
-            {
-              "pattern": "^pkill\\b"
-            },
-            {
-              "pattern": "^sleep\\s+3(\\s|$)"
-            },
-            {
-              "pattern": "^curl\\b"
-            },
-            {
-              "pattern": "^grep\\b"
-            }
-          ],
-        },
-        "fetch": {
-          "always_allow": [
-            {
-              "pattern": "^https?://raw\\.githubusercontent\\.com"
-            },
-            {
-              "pattern": "^https?://v4\\.zod\\.dev"
-            }
-          ],
-        },
-      },
-    },
-    "default_profile": "write",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview",
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+    "default_profile": "write",
     "thread_summary_model": {
       "model": "claude-sonnet-4.6",
       "effort": "high",
       "enable_thinking": true,
       "provider": "copilot_chat",
     },
-    "default_model": {
-      "effort": "high",
-      "enable_thinking": true,
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
-    },
+
   },
   // "show_completions_on_input": false,
   "show_edit_predictions": true,

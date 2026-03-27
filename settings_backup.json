@@ -7,24 +7,37 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "agent_servers": {
+    "gemini": {
+      "type": "registry"
+    }
+  },
   "tabs": { "file_icons": true },
 
+  "max_tabs": 5,
   "colorize_brackets": true,
   "indent_guides": {
-    "background_coloring": "disabled"
+    "background_coloring": "disabled",
   },
   "icon_theme": {
     "mode": "system",
     "light": "Zed (Default)",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Catppuccin Macchiato",
   },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Macchiato"
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
+    "dark": "One Dark",
   },
   "jupyter": {
     "enabled": true,
@@ -32,20 +45,133 @@
       "python": "conda-env",
       "typescript": "deno",
       "javascript": "deno",
-      "r": "ark"
-    }
+      "r": "ark",
+    }},
+  "language_models": {
+    "openai_compatible": {
+      "mlx-lm": {
+        "api_url": "http://localhost:19999",
+        "available_models": [
+          {
+            "name": "lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
+    },
+    "ollama": {
+      "api_url": "http://localhost:11434",
+    },
   },
+  "theme": "Ayu Dark",
+  "jupyter": {},
   "edit_predictions": {
+    "provider": "zed",
     "mode": "subtle",
-    "enabled_in_text_threads": true
+    "mode": "eager",
+    "enabled_in_text_threads": true,
   },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow",
+          "always_allow": [
+            {
+              "pattern": "^mkdir\\b"
+            },
+            {
+              "pattern": "^ls\\s+slx/bun/node_modules(\\s|$)"
+            },
+            {
+              "pattern": "^ls\\b"
+            },
+            {
+              "pattern": "^ls\\s+node_modules/@types(\\s|$)"
+            },
+            {
+              "pattern": "^bun\\s+run(\\s|$)"
+            },
+            {
+              "pattern": "^cd\\s+bun(\\s|$)"
+            },
+            {
+              "pattern": "^cat\\s+bun/node_modules/@types/uuid/package\\.json(\\s|$)"
+            },
+            {
+              "pattern": "^find\\s+bun/src(\\s|$)"
+            },
+            {
+              "pattern": "^cd\\s+/Users/matemagyar/slx/bun(\\s|$)"
+            },
+            {
+              "pattern": "^pkill\\b"
+            },
+            {
+              "pattern": "^sleep\\s+3(\\s|$)"
+            },
+            {
+              "pattern": "^curl\\b"
+            },
+            {
+              "pattern": "^grep\\b"
+            }
+          ],
+        },
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://raw\\.githubusercontent\\.com"
+            },
+            {
+              "pattern": "^https?://v4\\.zod\\.dev"
+            }
+          ],
+        },
+      },
+    },
     "default_profile": "write",
-    "always_allow_tool_actions": true,
+    "thread_summary_model": {
+      "model": "claude-sonnet-4.6",
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "copilot_chat",
+    },
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview"
-    }
+      "effort": "high",
+      "enable_thinking": true,
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://zed\\.dev"
+            }
+          ]
+        },
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^npx\\s+tsc(\\s|$)"
+            },
+            {
+              "pattern": "^git\\s+log(\\s|$)"
+            },
+            {
+              "pattern": "^git\\s+show(\\s|$)"
+            }
+          ]
+        }
+      }
+    },
+    "default_profile": "write",
   },
   // "show_completions_on_input": false,
   "show_edit_predictions": true,
@@ -64,8 +190,8 @@
     "show_other_hints": true,
     "show_background": true,
     "toggle_on_modifiers_press": {
-      "function": true
-    }
+      "function": true,
+    },
   },
   "buffer_font_features": { "calt": false },
   "use_autoclose": false,
@@ -79,54 +205,56 @@
         // in your project's settings, rather than globally.
         "directories": [".venv", "venv", "local/.venv"],
         // Can also be `csh`, `fish`, and `nushell`
-        "activate_script": "default"
-      }
-    }
+        "activate_script": "default",
+      },
+    },
   },
   "languages": {
     "CSS": {
+      "language_servers": ["vscode-css-language-server"],
+
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
     },
     "TOML": {
-      "format_on_save": "off"
-    }
+      "format_on_save": "off",
+    },
   },
   "lsp": {
     "eslint": {
-      "settings": {}
+      "settings": {},
     },
     "css": {
       "templateStringLanguages": ["css", "styled"],
       "embeddedLanguages": {
-        "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
-      }
+        "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+      },
     },
-    "pyright": {
+    "basedpyright": {
       "settings": {
         "python.analysis": {
           "typeCheckingMode": "standard",
           "extraPaths": [
             "/Users/matemagyar/code/controlplane-be",
             "/Users/matemagyar/code/controlplane-be/local",
-            "/Users/matemagyar/code/controlplane-be/local/.venv/lib/python3.12/site-packages"
+            "/Users/matemagyar/code/controlplane-be/local/.venv/lib/python3.12/site-packages",
           ],
           "useLibraryCodeForTypes": true,
           "ignoreMissingImports": true,
           "ignoreMissingTypeStubs": true,
           "autoSearchPaths": true,
           // "diagnosticMode": "",
-          "openFilesOnly": false
+          "openFilesOnly": false,
         },
         "python": {
           "pythonPath": "/Users/matemagyar/code/controlplane-be/local/.venv/bin/python",
-          "venvPath": "/Users/matemagyar/code/controlplane-be/local/.venv"
-        }
-      }
+          "venvPath": "/Users/matemagyar/code/controlplane-be/local/.venv",
+        },
+      },
     },
     "vtsls": {
       "settings": {
@@ -137,55 +265,54 @@
         // For JavaScript:
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
+            "enabled": "always",
           },
           "validate": {
-            "templateStringLiterals": true
+            "templateStringLiterals": true,
           },
           "inlayHints": {
             "parameterNames": {
               "enabled": "all",
-              "suppressWhenArgumentMatchesName": true
+              "suppressWhenArgumentMatchesName": true,
             },
             "parameterTypes": { "enabled": true },
             "variableTypes": {
               "enabled": true,
-              "suppressWhenTypeMatchesName": true
+              "suppressWhenTypeMatchesName": true,
             },
             "propertyDeclarationTypes": { "enabled": true },
             "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true }
-          }
+            "enumMemberValues": { "enabled": true },
+          },
         },
         // For TypeScript:
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
+            "enabled": "always",
           },
           "validate": {
-            "templateStringLiterals": true
+            "templateStringLiterals": true,
           },
           "languageFeatures": {
-            "semanticTokens": true
+            "semanticTokens": true,
           },
           "tsserver": { "experimental": { "enableProjectDiagnostics": true } },
-
           "inlayHints": {
             "parameterNames": {
               "enabled": "all",
-              "suppressWhenArgumentMatchesName": true
+              "suppressWhenArgumentMatchesName": true,
             },
             "parameterTypes": { "enabled": true },
             "variableTypes": {
               "enabled": true,
-              "suppressWhenTypeMatchesName": true
+              "suppressWhenTypeMatchesName": true,
             },
             "propertyDeclarationTypes": { "enabled": true },
             "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true }
-          }
-        }
-      }
-    }
-  }
+            "enumMemberValues": { "enabled": true },
+          },
+        },
+      },
+    },
+  },
 }
