@@ -1,103 +1,4 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
-  /* Duplicated key auto-commented: "agent": {
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
-      "enable_thinking": true,
-      "effort": "high"
-    },
-    "favorite_models": [],
-    "model_parameters": []
-  }, */
-  "agent_servers": {
-    "gemini": {
-      "type": "registry"
-    }
-  },
-  "tabs": { "file_icons": true },
-
-  "max_tabs": 5,
-  "colorize_brackets": true,
-  "indent_guides": {
-    "background_coloring": "disabled",
-  },
-  "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
-    "dark": "Catppuccin Macchiato",
-  },
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "One Dark",
-  },
-  "jupyter": {
-    "enabled": true,
-    "kernel_selections": {
-      "python": "conda-env",
-      "typescript": "deno",
-      "javascript": "deno",
-      "r": "ark",
-    }},
-  "language_models": {
-    "openai_compatible": {
-      "mlx-lm": {
-        "api_url": "http://localhost:19999",
-        "available_models": [
-          {
-            "name": "lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
-            "max_tokens": 200000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 200000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-        ],
-      },
-    },
-    "ollama": {
-      "api_url": "http://localhost:11434",
-    },
-  },
-  "edit_predictions": {
-    "provider": "zed",
-    "mode": "eager",
-    "enabled_in_text_threads": true,
-  },
-  "agent": {
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
-      "enable_thinking": true,
-      "effort": "high"
-    },
-    "favorite_models": [],
-    "model_parameters": []
-  },
-    "default_profile": "write",
-    "thread_summary_model": {
-      "model": "claude-sonnet-4.6",
-      "effort": "high",
-      "enable_thinking": true,
-      "provider": "copilot_chat",
-    },
-
-  },
-  // "show_completions_on_input": false,
-  "show_edit_predictions": true,
   "vim_mode": true,
   "ui_font_size": 14.0,
   "buffer_font_size": 14.0,
@@ -123,15 +24,66 @@
     "dock": "bottom",
     "detect_venv": {
       "on": {
-        // Default directories to search for virtual environments, relative
-        // to the current working directory. We recommend overriding this
-        // in your project's settings, rather than globally.
         "directories": [".venv", "venv", "local/.venv"],
-        // Can also be `csh`, `fish`, and `nushell`
         "activate_script": "default",
       },
     },
   },
+  "agent_servers": {
+    "gemini": {
+      "type": "registry",
+    },
+  },
+  "tabs": { "file_icons": true },
+
+  "max_tabs": 5,
+  "colorize_brackets": true,
+  "indent_guides": {
+    "background_coloring": "disabled",
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Catppuccin Macchiato",
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "jupyter": {
+    "enabled": true,
+    "kernel_selections": {
+      "python": "conda-env",
+      "typescript": "deno",
+      "javascript": "deno",
+      "r": "ark",
+    },
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+    "enabled_in_text_threads": true,
+  },
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "high",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "default_profile": "write",
+  "thread_summary_model": {
+    "model": "claude-sonnet-4.6",
+    "effort": "high",
+    "enable_thinking": true,
+    "provider": "copilot_chat",
+  },
+  "show_edit_predictions": true,
+
   "languages": {
     "CSS": {
       "language_servers": ["vscode-css-language-server"],
@@ -170,7 +122,6 @@
           "ignoreMissingImports": true,
           "ignoreMissingTypeStubs": true,
           "autoSearchPaths": true,
-          // "diagnosticMode": "",
           "openFilesOnly": false,
         },
         "python": {
