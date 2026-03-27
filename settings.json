@@ -31,18 +31,113 @@
       "typescript": "deno",
       "javascript": "deno",
       "r": "ark",
+  "language_models": {
+    "openai_compatible": {
+      "mlx-lm": {
+        "api_url": "http://localhost:19999",
+        "available_models": [
+          {
+            "name": "lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-MLX-6bit",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
+    },
+    "ollama": {
+      "api_url": "http://localhost:11434",
     },
   },
+  "theme": "Ayu Dark",
+  "jupyter": {},
   "edit_predictions": {
     "provider": "zed",
     "mode": "subtle",
+    "mode": "eager",
     "enabled_in_text_threads": true,
   },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow",
+          "always_allow": [
+            {
+              "pattern": "^mkdir\\b"
+            },
+            {
+              "pattern": "^ls\\s+slx/bun/node_modules(\\s|$)"
+            },
+            {
+              "pattern": "^ls\\b"
+            },
+            {
+              "pattern": "^ls\\s+node_modules/@types(\\s|$)"
+            },
+            {
+              "pattern": "^bun\\s+run(\\s|$)"
+            },
+            {
+              "pattern": "^cd\\s+bun(\\s|$)"
+            },
+            {
+              "pattern": "^cat\\s+bun/node_modules/@types/uuid/package\\.json(\\s|$)"
+            },
+            {
+              "pattern": "^find\\s+bun/src(\\s|$)"
+            },
+            {
+              "pattern": "^cd\\s+/Users/matemagyar/slx/bun(\\s|$)"
+            },
+            {
+              "pattern": "^pkill\\b"
+            },
+            {
+              "pattern": "^sleep\\s+3(\\s|$)"
+            },
+            {
+              "pattern": "^curl\\b"
+            },
+            {
+              "pattern": "^grep\\b"
+            }
+          ],
+        },
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://raw\\.githubusercontent\\.com"
+            },
+            {
+              "pattern": "^https?://v4\\.zod\\.dev"
+            }
+          ],
+        },
+      },
+    },
     "default_profile": "write",
     "default_model": {
       "provider": "google",
       "model": "gemini-3-pro-preview",
+    "thread_summary_model": {
+      "model": "claude-sonnet-4.6",
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "copilot_chat",
+    },
+    "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
     },
   },
   // "show_completions_on_input": false,
@@ -83,6 +178,8 @@
   },
   "languages": {
     "CSS": {
+      "language_servers": ["vscode-css-language-server"],
+
       "formatter": {
         "external": {
           "command": "prettier",
@@ -104,7 +201,7 @@
         "css": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
       },
     },
-    "pyright": {
+    "basedpyright": {
       "settings": {
         "python.analysis": {
           "typeCheckingMode": "standard",
