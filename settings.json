@@ -109,9 +109,9 @@
     },
     "default_model": {
       "effort": "high",
-      "enable_thinking": true,
+      "enable_thinking": false,
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-6",
+      "model": "claude-opus-4-7",
     },
     "favorite_models": [],
     "model_parameters": [],
@@ -129,6 +129,7 @@
             { "pattern": "\\.(pem|key|p12|pfx)$" },
             { "pattern": "\\.ssh/" },
           ],
+          "always_allow": [{ "pattern": ".*" }],
         },
         "delete_path": {
           "default": "confirm",
@@ -325,6 +326,7 @@
         },
         "create_file": {
           "default": "allow",
+          "always_allow": [{ "pattern": ".*" }],
         },
       },
     },

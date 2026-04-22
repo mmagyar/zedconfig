@@ -18,8 +18,9 @@ If a project-level `AGENTS.md` or `CLAUDE.md` exists, read it first — it takes
 ## Tool Use & Parallelism
 
 - Run independent tool calls in parallel; serialize only when one step's output feeds the next.
+- Use zed provided built in tools for reading, editing and searching.
 - Edit files with file-editing tools only — never `sed`, `awk`, `perl -i`, `echo >` (they bypass safety checks and can silently corrupt files).
-- Shell commands are for compilers, test runners, linters, and read-only inspection (`cat`, `ls`, `grep`) only.
+- Shell commands are for compilers, test runners, linters only
 - Invoke local binaries via the package manager: `bun <bin>`, `npm exec <bin>`, `yarn <bin>`, `pnpm exec <bin>` — never `npx`, `bunx`, `yarn dlx`, `pnpm dlx`.
 
 ## Scope Discipline
