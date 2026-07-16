@@ -18,10 +18,11 @@ If a project-level `AGENTS.md` or `CLAUDE.md` exists, read it first — it takes
 ## Tool Use & Parallelism
 
 - Run independent tool calls in parallel; serialize only when one step's output feeds the next.
-- Use zed provided built in tools for reading, editing and searching.
+- Use your environment's built-in tools for reading, editing, and searching — not shell equivalents.
 - Edit files with file-editing tools only — never `sed`, `awk`, `perl -i`, `echo >` (they bypass safety checks and can silently corrupt files).
 - Shell commands are for compilers, test runners, linters only
 - Invoke local binaries via the package manager: `bun <bin>`, `npm exec <bin>`, `yarn <bin>`, `pnpm exec <bin>` — never `npx`, `bunx`, `yarn dlx`, `pnpm dlx`.
+- Any standalone script you write (one-off, CLI, automation) is TypeScript run with bun — never plain JS, Python, or shell for anything beyond a one-liner.
 
 ## Scope Discipline
 
@@ -47,12 +48,6 @@ If a project-level `AGENTS.md` or `CLAUDE.md` exists, read it first — it takes
 - Run the full validation suite (lint + type-check + tests) before marking a task complete.
 - Fix type errors before tests — they're faster to diagnose and often cause test failures.
 - Run validation from the repo root (`package.json`, `Cargo.toml`, `pyproject.toml`, etc.).
-
-## Git Safety
-
-- Read-only git only: `git log`, `git diff`, `git status`, `git show`.
-- Never run state-changing git commands (`add`, `commit`, `push`, `stash`, `checkout`, `switch`, `reset`, `clean`, `merge`, `rebase`) — unconditionally, even if asked.
-- Git state is the user's sole responsibility.
 
 ## Error Handling
 
