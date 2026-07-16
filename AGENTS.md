@@ -79,3 +79,7 @@ Derive from the authoritative source; never restate what's already encoded elsew
 - Derive TS types from schemas — no parallel interfaces.
 - Pass route objects to the router directly — don't repeat method/path strings.
 - Derive column types from migration/schema files — no hand-written duplicates.
+
+## Scripts
+
+- Always add progress indication to the scripts so we know what's happening.
